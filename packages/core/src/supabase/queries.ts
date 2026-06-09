@@ -3,6 +3,10 @@ import { supabase } from './client'
 
 type SpotRow = Database['public']['Tables']['fishing_spots']['Row']
 
+// Typed alias for write operations (until `supabase gen types` is run against a live project)
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
+const db = supabase as any
+
 // ─── Map viewport query ────────────────────────────────────────────────────────
 // Uses PostGIS && bounding box operator with GIST index
 
@@ -16,7 +20,8 @@ export async function getSpotsInViewport(params: {
   species?: string[]
   limit?: number
 }): Promise<SpotMapMarker[]> {
-  const { data, error } = await supabase.rpc('spots_in_viewport', {
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  const { data, error } = await db.rpc('spots_in_viewport', {
     min_lng: params.minLng,
     min_lat: params.minLat,
     max_lng: params.maxLng,
@@ -40,7 +45,8 @@ export async function getNearbySpots(params: {
   radiusMeters?: number
   limit?: number
 }): Promise<SpotWithDistance[]> {
-  const { data, error } = await supabase.rpc('spots_nearby', {
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  const { data, error } = await db.rpc('spots_nearby', {
     lng: params.lng,
     lat: params.lat,
     radius_m: params.radiusMeters ?? 50000,
@@ -125,7 +131,7 @@ export async function searchSpots(query: string, limit = 15) {
 // ─── Insert spot ───────────────────────────────────────────────────────────────
 
 export async function insertSpot(spot: Database['public']['Tables']['fishing_spots']['Insert']) {
-  const { data, error } = await supabase
+  const { data, error } = await db
     .from('fishing_spots')
     .insert(spot)
     .select()
@@ -149,7 +155,7 @@ export async function getUserCollections(userId: string) {
 }
 
 export async function addToCollection(collectionId: string, spotId: string) {
-  const { error } = await supabase
+  const { error } = await db
     .from('collection_items')
     .insert({ collection_id: collectionId, spot_id: spotId })
 

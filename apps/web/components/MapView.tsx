@@ -76,7 +76,7 @@ function MapViewInner() {
       mapStyle={MAP_STYLE}
       onMoveEnd={onMove}
       onLoad={onMove}
-      attributionControl={{ compact: true }}
+      attributionControl={true}
     >
       <NavigationControl position="top-right" showCompass={false} />
       <GeolocateControl position="top-right" trackUserLocation={false} />
