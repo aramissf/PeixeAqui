@@ -1,0 +1,55 @@
+/* PeixeAqui global styles */
+
+@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&family=JetBrains+Mono:wght@400;600&display=swap');
+
+:root {
+  --bg-primary: #0A0E1A;
+  --bg-surface: #111827;
+  --bg-elevated: #1C2537;
+  --border: #263147;
+  --brand-teal: #0AABB5;
+  --brand-amber: #F0920A;
+  --text-primary: #F1F5F9;
+  --text-secondary: #94A3B8;
+  --text-muted: #475569;
+  --score-excellent: #22C55E;
+  --score-good: #84CC16;
+  --score-moderate: #F59E0B;
+  --score-poor: #EF4444;
+}
+
+* {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+}
+
+html,
+body {
+  height: 100%;
+  max-width: 100vw;
+  overflow-x: hidden;
+  background: var(--bg-primary);
+  color: var(--text-primary);
+  font-family: 'Plus Jakarta Sans', system-ui, sans-serif;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+/* MapLibre overrides */
+.maplibregl-map {
+  font-family: 'Plus Jakarta Sans', system-ui, sans-serif;
+}
+
+.maplibregl-ctrl-attrib {
+  background: rgba(10, 14, 26, 0.7) !important;
+  color: var(--text-muted) !important;
+  font-size: 11px;
+}
+
+.maplibregl-ctrl-attrib a {
+  color: var(--text-muted) !important;
+}
