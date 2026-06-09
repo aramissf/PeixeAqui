@@ -1,0 +1,23 @@
+{
+  "name": "@peixeaqui/core",
+  "version": "0.0.1",
+  "private": true,
+  "main": "./src/index.ts",
+  "exports": {
+    ".": "./src/index.ts",
+    "./supabase": "./src/supabase/index.ts",
+    "./weather": "./src/weather/index.ts",
+    "./tides": "./src/tides/index.ts",
+    "./fishing-score": "./src/fishing-score/index.ts",
+    "./solunar": "./src/solunar/index.ts"
+  },
+  "dependencies": {
+    "@peixeaqui/types": "workspace:*",
+    "@supabase/supabase-js": "^2.47.10",
+    "date-fns": "^4.1.0",
+    "zod": "^3.24.1"
+  },
+  "devDependencies": {
+    "typescript": "^5.7.3"
+  }
+}
