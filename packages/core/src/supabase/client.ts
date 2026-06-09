@@ -1,12 +1,15 @@
 import { createClient } from '@supabase/supabase-js'
 import type { Database } from '@peixeaqui/types'
 
-const supabaseUrl = process.env['EXPO_PUBLIC_SUPABASE_URL'] ?? process.env['NEXT_PUBLIC_SUPABASE_URL'] ?? ''
-const supabaseAnonKey = process.env['EXPO_PUBLIC_SUPABASE_ANON_KEY'] ?? process.env['NEXT_PUBLIC_SUPABASE_ANON_KEY'] ?? ''
+const supabaseUrl =
+  process.env['EXPO_PUBLIC_SUPABASE_URL'] ??
+  process.env['NEXT_PUBLIC_SUPABASE_URL'] ??
+  'https://placeholder.supabase.co'
 
-if (!supabaseUrl || !supabaseAnonKey) {
-  console.warn('Supabase URL or anon key not configured. Set EXPO_PUBLIC_SUPABASE_URL and EXPO_PUBLIC_SUPABASE_ANON_KEY.')
-}
+const supabaseAnonKey =
+  process.env['EXPO_PUBLIC_SUPABASE_ANON_KEY'] ??
+  process.env['NEXT_PUBLIC_SUPABASE_ANON_KEY'] ??
+  'placeholder'
 
 export const supabase = createClient<Database>(supabaseUrl, supabaseAnonKey, {
   auth: {

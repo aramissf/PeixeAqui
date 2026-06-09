@@ -1,6 +1,8 @@
 // Spot detail page — SSR for SEO
 // Each spot gets a crawlable, shareable URL: /spot/[id]
 
+export const dynamic = 'force-dynamic'
+
 import type { Metadata } from 'next'
 import { notFound } from 'next/navigation'
 import { getSpotById } from '@peixeaqui/core/supabase'
