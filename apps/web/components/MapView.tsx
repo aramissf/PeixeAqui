@@ -8,9 +8,31 @@ import { getSpotsInViewport } from '@peixeaqui/core/supabase'
 import { getScoreColor, colors } from '@peixeaqui/ui'
 import type { SpotMapMarker } from '@peixeaqui/types'
 import type { MapRef, ViewStateChangeEvent } from 'react-map-gl/maplibre'
+import type { StyleSpecification } from 'maplibre-gl'
 
-// Free dark map style from MapLibre demo (replace with custom style in production)
-const MAP_STYLE = 'https://demotiles.maplibre.org/style.json'
+// CARTO Dark Matter raster tiles — free, no API key, reliable
+const MAP_STYLE: StyleSpecification = {
+  version: 8,
+  sources: {
+    'carto-dark': {
+      type: 'raster',
+      tiles: [
+        'https://a.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}@2x.png',
+        'https://b.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}@2x.png',
+        'https://c.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}@2x.png',
+      ],
+      tileSize: 256,
+      attribution: '© <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors © <a href="https://carto.com/attributions">CARTO</a>',
+    },
+  },
+  layers: [
+    {
+      id: 'carto-dark-layer',
+      type: 'raster',
+      source: 'carto-dark',
+    },
+  ],
+}
 
 const queryClient = new QueryClient({
   defaultOptions: {
